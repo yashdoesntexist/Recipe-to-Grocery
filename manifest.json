@@ -39,6 +39,7 @@
   ],
 
   "action": {
+    "default_title": "Recipe to Grocery",
     "default_popup": "popup.html"
   }
 }

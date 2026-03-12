@@ -1,17 +1,17 @@
-/* Whole popup grey background */
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   width: 280px;
   padding: 20px;
   margin: 0;
-  background-color: #d8d8d8; /* grey background */
+  background-color: #d8d8d8; 
   color: #1d1d1f;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Header */
+
 h2 {
   font-size: 20px;
   font-weight: 600;
@@ -19,7 +19,7 @@ h2 {
   text-align: center;
 }
 
-/* Add to Recipe button */
+
 #add-recipe-btn {
   background-color: #025ec0;
   color: #fff;

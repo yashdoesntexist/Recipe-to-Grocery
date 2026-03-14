@@ -1,4 +1,3 @@
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (request.action === "extractRecipe") {
@@ -17,7 +16,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 
 });
-
 
 
 function extractRecipe() {
@@ -57,30 +55,11 @@ function parseRecipe(data) {
 
     const ingredients = data.recipeIngredient || [];
 
-    let instructions = [];
-
-    if (Array.isArray(data.recipeInstructions)) {
-
-        instructions = data.recipeInstructions.map(step => {
-
-            if (typeof step === "string") {
-                return step;
-            }
-
-            if (step.text) {
-                return step.text;
-            }
-
-            return "";
-
-        });
-
-    }
+    const sourceUrl = window.location.href;
 
     return {
         title,
         ingredients,
-        instructions
+        sourceUrl
     };
-
 }

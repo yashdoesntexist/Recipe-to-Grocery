@@ -1,5 +1,30 @@
-document.getElementById("add-recipe-btn").addEventListener("click", () => {
-  // Placeholder for future logic
-  console.log("Add to Recipe button clicked!");
-  alert("This will eventually add the recipe to your list!");
+document.addEventListener("DOMContentLoaded", () => {
+
+    const addButton = document.getElementById("add-recipe-btn");
+
+    addButton.addEventListener("click", async () => {
+
+        try {
+            const [tab] = await chrome.tabs.query({
+                active: true,
+                currentWindow: true
+            });
+
+            if (!tab) {
+                console.error("No active tab found");
+                return;
+            }
+
+            console.log("Active page:", tab.url);
+
+            chrome.tabs.sendMessage(tab.id, {
+                action: "extractRecipe"
+            });
+
+        } catch (error) {
+            console.error("Popup error:", error);
+        }
+
+    });
+
 });

@@ -1,0 +1,10 @@
+@RecipeExtensionAPI_HostAddress = http://localhost:5131
+
+POST http://localhost:5131/api/recipes
+Content-Type: application/json
+
+{
+  "title": "Pasta",
+  "ingredients": ["tomato", "garlic"],
+  "sourceUrl": "https://example.com"
+}

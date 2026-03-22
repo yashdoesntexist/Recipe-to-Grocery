@@ -42,3 +42,66 @@ h2 {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
+#recipe-list {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.recipe-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.recipe-item h4 {
+  margin: 0 0 6px;
+}
+
+.recipe-controls {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.recipe-controls button, .edit-form button {
+  background: #025ec0;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.edit-form {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  z-index: 1000;
+  width: 260px;
+}
+
+.edit-form label {
+  display: block;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

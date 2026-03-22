@@ -8,10 +8,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         if (!recipe) {
             console.log("No recipe found on this page.");
-            return;
+            sendResponse({ recipe: null });
+            return true;
         }
 
         console.log("Recipe extracted:", recipe);
+        sendResponse({ recipe });
+        return true;
 
     }
 
@@ -53,7 +56,10 @@ function parseRecipe(data) {
 
     const title = data.name || document.title;
 
-    const ingredients = data.recipeIngredient || [];
+    const rawIngredients = data.recipeIngredient || [];
+    const ingredients = rawIngredients
+        .map(i => normalizeIngredientText(i))
+        .filter(i => i);
 
     const sourceUrl = window.location.href;
 
@@ -62,4 +68,18 @@ function parseRecipe(data) {
         ingredients,
         sourceUrl
     };
+}
+
+function normalizeIngredientText(text) {
+    if (!text) return "";
+
+    let normalized = String(text).toLowerCase().trim();
+
+    normalized = normalized.replace(/\d+(\.\d+)?\s*(g|gram|grams|kg|kilogram|kilograms|ml|l|liter|liters|cup|cups|tablespoon|tbsp|teaspoon|tsp|oz|ounce|ounces|lb|pound|pounds|pack|package|pieces|slice|slices)/gi, "");
+    normalized = normalized.replace(/\d+[\/\d]*|\/\d+/g, "");
+    normalized = normalized.replace(/\b(of|and|with|fresh|chopped|diced|minced)\b/gi, "");
+    normalized = normalized.replace(/[^a-z0-9 ]/gi, " ");
+    normalized = normalized.replace(/\s+/g, " ").trim();
+
+    return normalized;
 }

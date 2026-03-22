@@ -14,7 +14,12 @@
     "*://*.foodnetwork.com/*",
     "*://*.walmart.com/*",
     "*://*.amazon.com/*",
-    "http://localhost:5000/*"
+    "*://*.amazonfresh.com/*",
+    "*://*.bbcgoodfood.com/*",
+    "*://*.epicurious.com/*",
+    "*://*.delish.com/*",
+    "http://localhost:5000/*",
+    "http://localhost:5131/*"
   ],
 
   "background": {
@@ -25,14 +30,19 @@
     {
       "matches": [
         "*://*.allrecipes.com/*",
-        "*://*.foodnetwork.com/*"
+        "*://*.foodnetwork.com/*",
+        "*://*.bbcgoodfood.com/*",
+        "*://*.epicurious.com/*",
+        "*://*.delish.com/*"
       ],
       "js": ["recipe-parser.js"]
     },
     {
       "matches": [
         "*://*.walmart.com/*",
-        "*://*.amazon.com/*"
+        "*://*.walmart.ca/*",
+        "*://*.amazon.com/*",
+        "*://*.amazonfresh.com/*"
       ],
       "js": ["grocery-checker.js"]
     }
